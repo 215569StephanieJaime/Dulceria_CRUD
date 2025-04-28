@@ -24,13 +24,13 @@ services:
       - key: ALLOWED_HOSTS
         value: ".onrender.com"
       
-      # Variables del superusuario (ajusta estos valores)
+      # Variables del superusuario
       - key: DJANGO_SUPERUSER_USERNAME
-        value: "admin_stephanie"  # Cambia al nombre de usuario deseado
+        value: "admin_stephanie"
       - key: DJANGO_SUPERUSER_EMAIL
-        value: "stephanie@example.com"  # Cambia al email real
+        value: "stephanie@example.com"
       - key: DJANGO_SUPERUSER_PASSWORD
-        generateValue: true  # Render generará una contraseña segura automáticamente
+        generateValue: true
       
       # Optimización de rendimiento
       - key: WEB_CONCURRENCY
