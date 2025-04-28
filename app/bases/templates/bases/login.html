@@ -1,0 +1,85 @@
+{% extends "bases/base_login.html" %}
+{% load static %}
+
+{% block login %}
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-flex align-items-center justify-content-center p-4">
+                            <img src="{% static 'base/img/inven.png' %}" class="img-fluid" alt="Inventario" style="max-height: 500px;">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <small class="text-danger">
+                                        {% if form.errors %}
+                                            {% for field in form %}
+                                                {% if field.errors %}
+                                                    {% for error in field.errors %}
+                                                        {{ error|escape }}
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if form.non_field_errors %}
+                                                {% for error in form.non_field_errors %}
+                                                    {{ error|escape }}
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </small>
+                                </div>
+                                <form class="user" method="POST">
+                                    {% csrf_token %}
+                                    {% if error %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ error }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="id_username" name="username" placeholder="Usuario">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="id_password" name="password" placeholder="Password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block js_page %}
+<script>
+    function mensaje(texto, color = 'blue') {
+        $.alert({
+            title: 'Error',
+            content: texto,
+            type: color,
+            typeAnimated: true,
+            buttons: {
+                ok: {
+                    text: 'Aceptar',
+                    btnClass: 'btn-' + color,
+                }
+            }
+        })
+    }
+
+    {% if error %}
+        mensaje('{{ error|escapejs }}', 'red');
+    {% endif %}
+</script>
+{% endblock %}

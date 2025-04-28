@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="{% static 'base/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'base/vendor/jquery_confirm/jquery-confirm.min.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gradient-primary">
+
+    {% block login %}{% endblock %}
+
+    <script src="{% static 'base/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'base/vendor/jquery_confirm/jquery-confirm.min.js' %}"></script>
+    <script src="{% static 'base/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'base/js/sb-admin-2.min.js' %}"></script>
+
+    {% block js_page %}{% endblock %}
+</body>
+</html>

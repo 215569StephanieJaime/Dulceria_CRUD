@@ -1,0 +1,107 @@
+<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <form method="POST" class="form-inline">
+            {% csrf_token %}
+            <div class="col">
+                <div class="card border-left-danger shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase">
+                            <div class="alert">
+                                ¿ Inactivar <b>{{ obj.descripcion }} </b> ?
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <button type="button" class="btn btn-danger" id="btnInactivar"><i class="far fa-question-circle"></i>Si, Inactivar</button>
+                        <button type="button" class="btn btn-success" onclick="return cerrar_modal()">
+                            No, Cancelar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </form>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      var token = $('input[name=csrfmiddlewaretoken]').val();
+  
+      $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+          if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            xhr.setRequestHeader("X-CSRFToken", token);
+          }
+        }
+      });
+  
+      $("#btnInactivar").click(function (e) {
+        e.preventDefault();
+  
+        var template = "{% url 'cmp:proveedor_inactivar' obj.id %}";
+        var data = { id: {{ obj.id }} };
+  
+        $.ajax({
+          type: "POST",
+          url: template,
+          data: data,
+          success: function (response) {
+            cerrar_modal();
+            var tipo = (response.includes('Proveedor no existe') || response.includes('ya estaba inactivo')) ? 'red' : 'green';
+
+            $('#estado-' + {{ obj.id }}).text('Inactivo');
+  
+            $.alert({
+              title: 'Mensaje',
+              content: response,
+              type: tipo,
+              typeAnimated: true,
+              buttons: {
+                ok: {
+                  text: 'Aceptar',
+                  btnClass: 'btn-' + tipo,
+                }
+              }
+            }).then(function () {
+                window.location.href = window.location.href;
+            });
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+            mensaje('Error interno del servidor', 'red');
+            cerrar_modal();
+          }
+        });
+      });
+    });
+  
+    function cerrar_modal() {
+      $('#popup').modal('hide');
+      $('.modal-backdrop').remove();
+      $('#popup').remove();
+      $('body').removeClass('modal-open');
+      $('body').append('<div class="modal fade" id="popup" tabindex="-1" role="dialog"></div>');
+    }
+  
+    function mensaje(texto, color = 'blue') {
+      $.alert({
+        title: 'Mensaje',
+        content: texto,
+        type: color,
+        typeAnimated: true,
+        buttons: {
+          ok: {
+            text: 'Aceptar',
+            btnClass: 'btn-' + color,
+          }
+        }
+      });
+    }
+  </script>
+  
+  
+    
