@@ -9,9 +9,10 @@ services:
     plan: free
     name: dulceria
     runtime: python
-    buildCommand: "cd app && ./build.sh"
+    buildCommand: "cd app && chmod +x build.sh && ./build.sh"
     startCommand: "cd app && gunicorn app.wsgi:application --bind 0.0.0.0:$PORT"
     envVars:
+      # Configuración esencial de Django
       - key: DATABASE_URL
         fromDatabase:
           name: dulceria_CRUD
@@ -22,5 +23,25 @@ services:
         generateValue: true
       - key: ALLOWED_HOSTS
         value: ".onrender.com"
+      
+      # Variables del superusuario (ajusta estos valores)
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: "admin_stephanie"  # Cambia al nombre de usuario deseado
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: "stephanie@example.com"  # Cambia al email real
+      - key: DJANGO_SUPERUSER_PASSWORD
+        generateValue: true  # Render generará una contraseña segura automáticamente
+      
+      # Optimización de rendimiento
       - key: WEB_CONCURRENCY
         value: 4
+      - key: PYTHONBUFFERED
+        value: 1
+      - key: DISABLE_COLLECTSTATIC
+        value: 0
+      
+      # Configuración adicional recomendada
+      - key: PYTHON_VERSION
+        value: "3.11.6"
+      - key: DEBUG
+        value: "False"
