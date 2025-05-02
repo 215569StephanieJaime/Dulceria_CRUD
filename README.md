@@ -16,11 +16,10 @@ Requisitos funcionales:
 | RF02  | Gestión de productos      | Agregar, eliminar y buscar productos por código y marca.                    |
 | RF03  | Gestión de proveedores    | Almacena nombre, teléfono y correo electrónico de proveedores.              |
 | RF04  | Clasificación de productos| Organiza productos por categorías definidas.                                |
-| RF05  | Reportes de compras       | Genera reportes por periodo y proveedor.                                    |
-| RF06  | Control de inventario     | Actualiza inventario automáticamente en compras y ventas.                   |
-| RF07  | Catálogo para usuarios    | Visualización de productos en formato de catálogo.                          |
-| RF08  | Restricción a empleados   | Empleados no pueden eliminar productos o proveedores.                       |
-| RF09  | Registro de ventas        | Permite guardar fecha, productos vendidos y total de la venta.              |
+| RF05  | Control de inventario     | Actualiza inventario automáticamente en compras y ventas.                   |
+| RF06  | Catálogo para usuarios    | Visualización de productos en formato de catálogo.                          |
+| RF07  | Restricción a empleados   | Empleados no pueden eliminar productos o proveedores.                       |
+| RF08  | Registro de ventas        | Permite guardar fecha, productos vendidos y total de la venta.              |
 
 
 
