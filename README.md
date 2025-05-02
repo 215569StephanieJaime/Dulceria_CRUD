@@ -35,6 +35,8 @@ Requisitos no funcionales:
 | RNF06  | Compatibilidad           | Funciona en navegadores modernos y dispositivos móviles.                     |
 | RNF07  | Tiempo de respuesta      | Las operaciones deben completarse en menos de 2 segundos.                    |
 
+
+
 ![Diagrama CRUD](img/Diagrama_CRUD.png)
 
 
