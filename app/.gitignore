@@ -39,3 +39,7 @@ ENV/
 *.swo
 
 .env
+
+#Visual Paradigm backups
+*.vpp.bak*
+
