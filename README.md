@@ -1,6 +1,9 @@
 215569 - Stephanie Jaime
 
 Sistema Web para Control Interno y Tienda Virtual de Dulcería
+render: https://dulceria-8lzh.onrender.com
+usuario: admin2
+contraseña: requisitos1
 
 El sistema permite a una dulcería gestionar internamente su inventario, compras y proveedores, mientras ofrece una tienda virtual para que los usuarios registrados con Gmail puedan explorar los productos disponibles y agregarlos a un carrito. A través de un panel administrativo, los encargados pueden registrar nuevas compras, mantener actualizado el catálogo de productos, y organizar la información por categorías, marcas y unidades de medida. El acceso está controlado por tipo de usuario: los administradores tienen control total sobre todas las funciones del sistema; los empleados pueden consultar, editar y registrar información, pero no tienen permiso para eliminar o crear productos ni proveedores; y los clientes acceden únicamente a la tienda en línea, donde pueden navegar por el catálogo y seleccionar productos, simulando una experiencia de compra completa.
 
@@ -36,7 +39,7 @@ Requisitos no funcionales:
 
 
 
-![Diagrama CRUD](img/Diagrama_CRUD.png)
+
 
 
 
