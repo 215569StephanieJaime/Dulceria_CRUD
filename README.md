@@ -1,7 +1,9 @@
 215569 - Stephanie Jaime
 
 Sistema Web para Control Interno y Tienda Virtual de Dulcería
+
 render: https://dulceria-8lzh.onrender.com
+
 usuario: admin2
 contraseña: requisitos1
 
@@ -36,6 +38,9 @@ Requisitos no funcionales:
 | RNF05  | Interfaz intuitiva       | Fácil de usar para personas sin experiencia técnica.                         |
 | RNF06  | Compatibilidad           | Funciona en navegadores modernos y dispositivos móviles.                     |
 | RNF07  | Tiempo de respuesta      | Las operaciones deben completarse en menos de 2 segundos.                    |
+
+
+![Diagrama CRUD](img/DiagramaDulceria.png)
 
 
 
